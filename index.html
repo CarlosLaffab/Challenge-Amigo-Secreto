@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Amigo Secreto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-content">
+        <!-- Banner superior -->
+        <div class="header-banner">
+            <img src="assets/amigo-secreto.png" alt="Amigo Secreto" style="height:80px; margin-right:16px;">
+            <h1 class="main-title">Amigo Secreto</h1>
+        </div>
+        
+        <!-- Sección de input -->
+        <div class="input-section">
+            <h2 class="section-title">Crea una lista con tus amigos para jugar</h2>
+            
+            <!-- Input y botón agregar -->
+            <div class="input-wrapper">
+                <input type="text" id="nombreAmigo" class="input-name" placeholder="Nombre del amigo">
+                <button id="btnAgregar" class="button-add">Añadir</button>
+            </div>
+            
+            <!-- Lista de amigos -->
+            <ul id="listaAmigos"></ul>
+            
+            <!-- Botones sortear y limpiar -->
+            <div class="button-container">
+                <button id="btnSortear" class="button-draw">
+                    <img src="assets/play_circle_outline.png" alt="Sortear" style="height:24px; margin-right:8px; vertical-align:middle;">
+                    Sortear amigo
+                </button>
+                <button id="btnLimpiar" class="button-draw">Limpiar lista</button>
+            </div>
+            
+            <!-- Resultado del sorteo -->
+            <div id="resultadoSorteo" class="result-list"></div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+    <script>
+        function agregarAmigo() {
+            let input = document.getElementById('nombreAmigo');
+            let nombre = input.value.trim();
+
+            // Validar que solo haya letras y espacios
+            if (/\d/.test(nombre)) {
+                alert('No se permiten números, por favor intenta de nuevo.');
+                input.value = '';
+                input.focus();
+                return;
+            }
+
+            if (nombre != '') {
+                amigos.push(nombre);
+                input.value = '';
+                actualizarLista();
+            } else {
+                alert('Por favor, ingresa un nombre válido.');
+            }
+            input.focus();
+        }
+    </script>
+</body>
+</html>
